@@ -9,18 +9,21 @@
 #define CONCRETESTATES_H_
 
 #include "State.h"
+#include "Game.h"
+#include <memory>
 
-class GameState {
+class GameState: public State {
 public:
 	virtual ~GameState();
 protected:
-	GameState();
+	GameState(Game &g);
+	Game &g;
 
 };
 
-class StartState: public State {
+class StartState: public GameState {
 public:
-	StartState();
+	StartState(Game &g);
 	virtual ~StartState();
 
 	virtual bool handleEvent(const Event &e, Context &c);
@@ -29,9 +32,9 @@ public:
 	virtual void exitAction();
 };
 
-class LoseState: public State {
+class LoseState: public GameState {
 public:
-	LoseState();
+	LoseState(Game &g);
 	virtual ~LoseState();
 
 	virtual bool handleEvent(const Event &e, Context &c);
@@ -40,9 +43,9 @@ public:
 	virtual void exitAction();
 };
 
-class WinState: public State {
+class WinState: public GameState {
 public:
-	WinState();
+	WinState(Game &g);
 	virtual ~WinState();
 
 	virtual bool handleEvent(const Event &e, Context &c);
@@ -51,9 +54,9 @@ public:
 	virtual void exitAction();
 };
 
-class Score4State: public State {
+class Score4State: public GameState {
 public:
-	Score4State();
+	Score4State(Game &g);
 	virtual ~Score4State();
 
 	virtual bool handleEvent(const Event &e, Context &c);
@@ -62,9 +65,9 @@ public:
 	virtual void exitAction();
 };
 
-class Score5State: public State {
+class Score5State: public GameState {
 public:
-	Score5State();
+	Score5State(Game &g);
 	virtual ~Score5State();
 
 	virtual bool handleEvent(const Event &e, Context &c);
@@ -73,9 +76,9 @@ public:
 	virtual void exitAction();
 };
 
-class Score6State: public State {
+class Score6State: public GameState {
 public:
-	Score6State();
+	Score6State(Game &g);
 	virtual ~Score6State();
 
 	virtual bool handleEvent(const Event &e, Context &c);
@@ -84,9 +87,9 @@ public:
 	virtual void exitAction();
 };
 
-class Score8State: public State {
+class Score8State: public GameState {
 public:
-	Score8State();
+	Score8State(Game &g);
 	virtual ~Score8State();
 
 	virtual bool handleEvent(const Event &e, Context &c);
@@ -95,9 +98,9 @@ public:
 	virtual void exitAction();
 };
 
-class Score9State: public State {
+class Score9State: public GameState {
 public:
-	Score9State();
+	Score9State(Game &g);
 	virtual ~Score9State();
 
 	virtual bool handleEvent(const Event &e, Context &c);
@@ -106,9 +109,9 @@ public:
 	virtual void exitAction();
 };
 
-class Score10State: public State {
+class Score10State: public GameState {
 public:
-	Score10State();
+	Score10State(Game &g);
 	virtual ~Score10State();
 
 	virtual bool handleEvent(const Event &e, Context &c);
@@ -117,9 +120,9 @@ public:
 	virtual void exitAction();
 };
 
-class Score11State: public State {
+class Score11State: public GameState {
 public:
-	Score11State();
+	Score11State(Game &g);
 	virtual ~Score11State();
 
 	virtual bool handleEvent(const Event &e, Context &c);

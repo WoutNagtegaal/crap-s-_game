@@ -10,13 +10,15 @@
 #include <iostream>
 #include <memory>
 
-GameState::GameState() {
+GameState::GameState(Game &g) :
+		g(g) {
 }
 
 GameState::~GameState() {
 }
 
-StartState::StartState() {
+StartState::StartState(Game &g) :
+		GameState(g) {
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
 }
 
@@ -30,31 +32,31 @@ bool StartState::handleEvent(const Event &e, Context &c) {
 	case 2:
 	case 3:
 	case 12:
-		c.setCurrentState(std::make_shared<LoseState>());
+		c.setCurrentState(std::make_shared<LoseState>(g));
 		break;
 	case 7:
-		c.setCurrentState(std::make_shared<WinState>());
+		c.setCurrentState(std::make_shared<WinState>(g));
 		break;
 	case 4:
-		c.setCurrentState(std::make_shared<Score4State>());
+		c.setCurrentState(std::make_shared<Score4State>(g));
 		break;
 	case 5:
-		c.setCurrentState(std::make_shared<Score5State>());
+		c.setCurrentState(std::make_shared<Score5State>(g));
 		break;
 	case 6:
-		c.setCurrentState(std::make_shared<Score6State>());
+		c.setCurrentState(std::make_shared<Score6State>(g));
 		break;
 	case 8:
-		c.setCurrentState(std::make_shared<Score8State>());
+		c.setCurrentState(std::make_shared<Score8State>(g));
 		break;
 	case 9:
-		c.setCurrentState(std::make_shared<Score9State>());
+		c.setCurrentState(std::make_shared<Score9State>(g));
 		break;
 	case 10:
-		c.setCurrentState(std::make_shared<Score10State>());
+		c.setCurrentState(std::make_shared<Score10State>(g));
 		break;
 	case 11:
-		c.setCurrentState(std::make_shared<Score11State>());
+		c.setCurrentState(std::make_shared<Score11State>(g));
 		break;
 	}
 	return true;
@@ -66,13 +68,15 @@ void StartState::doActivity() {
 
 void StartState::entryAction() {
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	g.rollDice();
 }
 
 void StartState::exitAction() {
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
 }
 
-LoseState::LoseState() {
+LoseState::LoseState(Game &g) :
+		GameState(g) {
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
 }
 
@@ -99,7 +103,8 @@ void LoseState::exitAction() {
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
 }
 
-WinState::WinState() {
+WinState::WinState(Game &g) :
+		GameState(g) {
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
 }
 
@@ -126,7 +131,8 @@ void WinState::exitAction() {
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
 }
 
-Score4State::Score4State() {
+Score4State::Score4State(Game &g) :
+		GameState(g) {
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
 }
 
@@ -138,13 +144,13 @@ bool Score4State::handleEvent(const Event &e, Context &c) {
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
 	switch (e.getId()) {
 	case 4:
-		c.setCurrentState(std::make_shared<WinState>());
+		c.setCurrentState(std::make_shared<WinState>(g));
 		break;
 	case 7:
-		c.setCurrentState(std::make_shared<LoseState>());
+		c.setCurrentState(std::make_shared<LoseState>(g));
 		break;
 	default:
-		c.setCurrentState(std::make_shared<Score4State>());
+		c.setCurrentState(std::make_shared<Score4State>(g));
 	}
 	return true;
 }
@@ -154,6 +160,7 @@ void Score4State::doActivity() {
 }
 
 void Score4State::entryAction() {
+	g.rollDice();
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
 }
 
@@ -161,7 +168,8 @@ void Score4State::exitAction() {
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
 }
 
-Score5State::Score5State() {
+Score5State::Score5State(Game &g) :
+		GameState(g) {
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
 }
 
@@ -171,8 +179,16 @@ Score5State::~Score5State() {
 
 bool Score5State::handleEvent(const Event &e, Context &c) {
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
-	(void) e;
-	(void) c;
+	switch (e.getId()) {
+	case 5:
+		c.setCurrentState(std::make_shared<WinState>(g));
+		break;
+	case 7:
+		c.setCurrentState(std::make_shared<LoseState>(g));
+		break;
+	default:
+		c.setCurrentState(std::make_shared<Score5State>(g));
+	}
 	return true;
 }
 
@@ -181,6 +197,7 @@ void Score5State::doActivity() {
 }
 
 void Score5State::entryAction() {
+	g.rollDice();
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
 }
 
@@ -188,7 +205,8 @@ void Score5State::exitAction() {
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
 }
 
-Score6State::Score6State() {
+Score6State::Score6State(Game &g) :
+		GameState(g) {
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
 }
 
@@ -198,8 +216,16 @@ Score6State::~Score6State() {
 
 bool Score6State::handleEvent(const Event &e, Context &c) {
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
-	(void) e;
-	(void) c;
+	switch (e.getId()) {
+	case 6:
+		c.setCurrentState(std::make_shared<WinState>(g));
+		break;
+	case 7:
+		c.setCurrentState(std::make_shared<LoseState>(g));
+		break;
+	default:
+		c.setCurrentState(std::make_shared<Score6State>(g));
+	}
 	return true;
 }
 
@@ -208,6 +234,7 @@ void Score6State::doActivity() {
 }
 
 void Score6State::entryAction() {
+	g.rollDice();
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
 }
 
@@ -215,7 +242,8 @@ void Score6State::exitAction() {
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
 }
 
-Score8State::Score8State() {
+Score8State::Score8State(Game &g) :
+		GameState(g) {
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
 }
 
@@ -225,8 +253,16 @@ Score8State::~Score8State() {
 
 bool Score8State::handleEvent(const Event &e, Context &c) {
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
-	(void) e;
-	(void) c;
+	switch (e.getId()) {
+	case 8:
+		c.setCurrentState(std::make_shared<WinState>(g));
+		break;
+	case 7:
+		c.setCurrentState(std::make_shared<LoseState>(g));
+		break;
+	default:
+		c.setCurrentState(std::make_shared<Score8State>(g));
+	}
 	return true;
 }
 
@@ -235,6 +271,7 @@ void Score8State::doActivity() {
 }
 
 void Score8State::entryAction() {
+	g.rollDice();
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
 }
 
@@ -242,7 +279,8 @@ void Score8State::exitAction() {
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
 }
 
-Score9State::Score9State() {
+Score9State::Score9State(Game &g) :
+		GameState(g) {
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
 }
 
@@ -252,8 +290,16 @@ Score9State::~Score9State() {
 
 bool Score9State::handleEvent(const Event &e, Context &c) {
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
-	(void) e;
-	(void) c;
+	switch (e.getId()) {
+	case 9:
+		c.setCurrentState(std::make_shared<WinState>(g));
+		break;
+	case 7:
+		c.setCurrentState(std::make_shared<LoseState>(g));
+		break;
+	default:
+		c.setCurrentState(std::make_shared<Score9State>(g));
+	}
 	return true;
 }
 
@@ -262,6 +308,7 @@ void Score9State::doActivity() {
 }
 
 void Score9State::entryAction() {
+	g.rollDice();
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
 }
 
@@ -269,18 +316,28 @@ void Score9State::exitAction() {
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
 }
 
-Score10State::Score10State() {
+Score10State::Score10State(Game &g) :
+		GameState(g) {
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
 }
 
 Score10State::~Score10State() {
+	g.rollDice();
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
 }
 
 bool Score10State::handleEvent(const Event &e, Context &c) {
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
-	(void) e;
-	(void) c;
+	switch (e.getId()) {
+	case 10:
+		c.setCurrentState(std::make_shared<WinState>(g));
+		break;
+	case 7:
+		c.setCurrentState(std::make_shared<LoseState>(g));
+		break;
+	default:
+		c.setCurrentState(std::make_shared<Score10State>(g));
+	}
 	return true;
 }
 
@@ -296,7 +353,8 @@ void Score10State::exitAction() {
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
 }
 
-Score11State::Score11State() {
+Score11State::Score11State(Game &g) :
+		GameState(g) {
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
 }
 
@@ -306,8 +364,16 @@ Score11State::~Score11State() {
 
 bool Score11State::handleEvent(const Event &e, Context &c) {
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
-	(void) e;
-	(void) c;
+	switch (e.getId()) {
+	case 11:
+		c.setCurrentState(std::make_shared<WinState>(g));
+		break;
+	case 7:
+		c.setCurrentState(std::make_shared<LoseState>(g));
+		break;
+	default:
+		c.setCurrentState(std::make_shared<Score11State>(g));
+	}
 	return true;
 }
 
@@ -316,6 +382,7 @@ void Score11State::doActivity() {
 }
 
 void Score11State::entryAction() {
+	g.rollDice();
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
 }
 

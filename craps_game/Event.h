@@ -10,7 +10,7 @@
 
 class Event {
 public:
-	Event(unsigned long long id);
+	explicit Event(unsigned long long id);
 	Event(const Event &rhs);
 
 	unsigned long long getId() const;
