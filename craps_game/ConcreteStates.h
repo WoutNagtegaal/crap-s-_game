@@ -40,4 +40,92 @@ public:
 	virtual void exitAction();
 };
 
+class WinState: public State {
+public:
+	WinState();
+	virtual ~WinState();
+
+	virtual bool handleEvent(const Event &e, Context &c);
+	virtual void doActivity();
+	virtual void entryAction();
+	virtual void exitAction();
+};
+
+class Score4State: public State {
+public:
+	Score4State();
+	virtual ~Score4State();
+
+	virtual bool handleEvent(const Event &e, Context &c);
+	virtual void doActivity();
+	virtual void entryAction();
+	virtual void exitAction();
+};
+
+class Score5State: public State {
+public:
+	Score5State();
+	virtual ~Score5State();
+
+	virtual bool handleEvent(const Event &e, Context &c);
+	virtual void doActivity();
+	virtual void entryAction();
+	virtual void exitAction();
+};
+
+class Score6State: public State {
+public:
+	Score6State();
+	virtual ~Score6State();
+
+	virtual bool handleEvent(const Event &e, Context &c);
+	virtual void doActivity();
+	virtual void entryAction();
+	virtual void exitAction();
+};
+
+class Score8State: public State {
+public:
+	Score8State();
+	virtual ~Score8State();
+
+	virtual bool handleEvent(const Event &e, Context &c);
+	virtual void doActivity();
+	virtual void entryAction();
+	virtual void exitAction();
+};
+
+class Score9State: public State {
+public:
+	Score9State();
+	virtual ~Score9State();
+
+	virtual bool handleEvent(const Event &e, Context &c);
+	virtual void doActivity();
+	virtual void entryAction();
+	virtual void exitAction();
+};
+
+class Score10State: public State {
+public:
+	Score10State();
+	virtual ~Score10State();
+
+	virtual bool handleEvent(const Event &e, Context &c);
+	virtual void doActivity();
+	virtual void entryAction();
+	virtual void exitAction();
+};
+
+class Score11State: public State {
+public:
+	Score11State();
+	virtual ~Score11State();
+
+	virtual bool handleEvent(const Event &e, Context &c);
+	virtual void doActivity();
+	virtual void entryAction();
+	virtual void exitAction();
+};
+
 #endif /* CONCRETESTATES_H_ */

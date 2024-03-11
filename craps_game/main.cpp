@@ -11,9 +11,9 @@ int main() {
 	pointyboy p = std::make_shared<StartState>();
 	c.setCurrentState(p);
 
-	c.scheduleEvent(6);
 	c.scheduleEvent(4);
 	c.scheduleEvent(2);
+	c.scheduleEvent(4);
 	c.run();
 
 }

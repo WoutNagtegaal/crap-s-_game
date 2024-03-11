@@ -10,6 +10,12 @@
 #include <iostream>
 #include <memory>
 
+GameState::GameState() {
+}
+
+GameState::~GameState() {
+}
+
 StartState::StartState() {
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
 }
@@ -20,8 +26,36 @@ StartState::~StartState() {
 
 bool StartState::handleEvent(const Event &e, Context &c) {
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
-	if(e.getId() == 2) {
+	switch (e.getId()) {
+	case 2:
+	case 3:
+	case 12:
 		c.setCurrentState(std::make_shared<LoseState>());
+		break;
+	case 7:
+		c.setCurrentState(std::make_shared<WinState>());
+		break;
+	case 4:
+		c.setCurrentState(std::make_shared<Score4State>());
+		break;
+	case 5:
+		c.setCurrentState(std::make_shared<Score5State>());
+		break;
+	case 6:
+		c.setCurrentState(std::make_shared<Score6State>());
+		break;
+	case 8:
+		c.setCurrentState(std::make_shared<Score8State>());
+		break;
+	case 9:
+		c.setCurrentState(std::make_shared<Score9State>());
+		break;
+	case 10:
+		c.setCurrentState(std::make_shared<Score10State>());
+		break;
+	case 11:
+		c.setCurrentState(std::make_shared<Score11State>());
+		break;
 	}
 	return true;
 }
@@ -62,5 +96,229 @@ void LoseState::entryAction() {
 }
 
 void LoseState::exitAction() {
+	std::cout << __PRETTY_FUNCTION__ << std::endl;
+}
+
+WinState::WinState() {
+	std::cout << __PRETTY_FUNCTION__ << std::endl;
+}
+
+WinState::~WinState() {
+	std::cout << __PRETTY_FUNCTION__ << std::endl;
+}
+
+bool WinState::handleEvent(const Event &e, Context &c) {
+	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	(void) e;
+	(void) c;
+	return true;
+}
+
+void WinState::doActivity() {
+	std::cout << __PRETTY_FUNCTION__ << std::endl;
+}
+
+void WinState::entryAction() {
+	std::cout << __PRETTY_FUNCTION__ << std::endl;
+}
+
+void WinState::exitAction() {
+	std::cout << __PRETTY_FUNCTION__ << std::endl;
+}
+
+Score4State::Score4State() {
+	std::cout << __PRETTY_FUNCTION__ << std::endl;
+}
+
+Score4State::~Score4State() {
+	std::cout << __PRETTY_FUNCTION__ << std::endl;
+}
+
+bool Score4State::handleEvent(const Event &e, Context &c) {
+	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	switch (e.getId()) {
+	case 4:
+		c.setCurrentState(std::make_shared<WinState>());
+		break;
+	case 7:
+		c.setCurrentState(std::make_shared<LoseState>());
+		break;
+	default:
+		c.setCurrentState(std::make_shared<Score4State>());
+	}
+	return true;
+}
+
+void Score4State::doActivity() {
+	std::cout << __PRETTY_FUNCTION__ << std::endl;
+}
+
+void Score4State::entryAction() {
+	std::cout << __PRETTY_FUNCTION__ << std::endl;
+}
+
+void Score4State::exitAction() {
+	std::cout << __PRETTY_FUNCTION__ << std::endl;
+}
+
+Score5State::Score5State() {
+	std::cout << __PRETTY_FUNCTION__ << std::endl;
+}
+
+Score5State::~Score5State() {
+	std::cout << __PRETTY_FUNCTION__ << std::endl;
+}
+
+bool Score5State::handleEvent(const Event &e, Context &c) {
+	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	(void) e;
+	(void) c;
+	return true;
+}
+
+void Score5State::doActivity() {
+	std::cout << __PRETTY_FUNCTION__ << std::endl;
+}
+
+void Score5State::entryAction() {
+	std::cout << __PRETTY_FUNCTION__ << std::endl;
+}
+
+void Score5State::exitAction() {
+	std::cout << __PRETTY_FUNCTION__ << std::endl;
+}
+
+Score6State::Score6State() {
+	std::cout << __PRETTY_FUNCTION__ << std::endl;
+}
+
+Score6State::~Score6State() {
+	std::cout << __PRETTY_FUNCTION__ << std::endl;
+}
+
+bool Score6State::handleEvent(const Event &e, Context &c) {
+	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	(void) e;
+	(void) c;
+	return true;
+}
+
+void Score6State::doActivity() {
+	std::cout << __PRETTY_FUNCTION__ << std::endl;
+}
+
+void Score6State::entryAction() {
+	std::cout << __PRETTY_FUNCTION__ << std::endl;
+}
+
+void Score6State::exitAction() {
+	std::cout << __PRETTY_FUNCTION__ << std::endl;
+}
+
+Score8State::Score8State() {
+	std::cout << __PRETTY_FUNCTION__ << std::endl;
+}
+
+Score8State::~Score8State() {
+	std::cout << __PRETTY_FUNCTION__ << std::endl;
+}
+
+bool Score8State::handleEvent(const Event &e, Context &c) {
+	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	(void) e;
+	(void) c;
+	return true;
+}
+
+void Score8State::doActivity() {
+	std::cout << __PRETTY_FUNCTION__ << std::endl;
+}
+
+void Score8State::entryAction() {
+	std::cout << __PRETTY_FUNCTION__ << std::endl;
+}
+
+void Score8State::exitAction() {
+	std::cout << __PRETTY_FUNCTION__ << std::endl;
+}
+
+Score9State::Score9State() {
+	std::cout << __PRETTY_FUNCTION__ << std::endl;
+}
+
+Score9State::~Score9State() {
+	std::cout << __PRETTY_FUNCTION__ << std::endl;
+}
+
+bool Score9State::handleEvent(const Event &e, Context &c) {
+	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	(void) e;
+	(void) c;
+	return true;
+}
+
+void Score9State::doActivity() {
+	std::cout << __PRETTY_FUNCTION__ << std::endl;
+}
+
+void Score9State::entryAction() {
+	std::cout << __PRETTY_FUNCTION__ << std::endl;
+}
+
+void Score9State::exitAction() {
+	std::cout << __PRETTY_FUNCTION__ << std::endl;
+}
+
+Score10State::Score10State() {
+	std::cout << __PRETTY_FUNCTION__ << std::endl;
+}
+
+Score10State::~Score10State() {
+	std::cout << __PRETTY_FUNCTION__ << std::endl;
+}
+
+bool Score10State::handleEvent(const Event &e, Context &c) {
+	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	(void) e;
+	(void) c;
+	return true;
+}
+
+void Score10State::doActivity() {
+	std::cout << __PRETTY_FUNCTION__ << std::endl;
+}
+
+void Score10State::entryAction() {
+	std::cout << __PRETTY_FUNCTION__ << std::endl;
+}
+
+void Score10State::exitAction() {
+	std::cout << __PRETTY_FUNCTION__ << std::endl;
+}
+
+Score11State::Score11State() {
+	std::cout << __PRETTY_FUNCTION__ << std::endl;
+}
+
+Score11State::~Score11State() {
+	std::cout << __PRETTY_FUNCTION__ << std::endl;
+}
+
+bool Score11State::handleEvent(const Event &e, Context &c) {
+	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	(void) e;
+	(void) c;
+	return true;
+}
+
+void Score11State::doActivity() {
+	std::cout << __PRETTY_FUNCTION__ << std::endl;
+}
+
+void Score11State::entryAction() {
+	std::cout << __PRETTY_FUNCTION__ << std::endl;
+}
+
+void Score11State::exitAction() {
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
 }
