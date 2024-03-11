@@ -9,20 +9,23 @@
 #include "ConcreteStates.h"
 #include <memory>
 #include "types.h"
+#include "Logger.h"
+
+#include <sstream>
 
 Game::Game() :
 		d1(Dice(6)), d2(Dice(6)) {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	Logger::getInstance().logText(__PRETTY_FUNCTION__);
 //	d1 = Dice(6);
 //	d2 = Dice(6);
 }
 
 Game::~Game() {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	Logger::getInstance().logText(__PRETTY_FUNCTION__);
 }
 
 void Game::play() {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	Logger::getInstance().logText(__PRETTY_FUNCTION__);
 	pointyboy p = std::make_shared<StartState>(*this);
 	this->setCurrentState(p);
 	this->run();
@@ -31,7 +34,9 @@ void Game::play() {
 void Game::rollDice() {
 	d1.roll();
 	d2.roll();
-	std::cout << __PRETTY_FUNCTION__ << ": " << d1 + d2 << std::endl;
+	std::stringstream s;
+	s << __PRETTY_FUNCTION__ << ": " << static_cast<long>(d1 + d2);
+	Logger::getInstance().logText(s);
 	this->scheduleEvent(Event(d1 + d2));
 //	this->scheduleEvent(Event(10));
 }

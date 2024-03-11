@@ -8,12 +8,13 @@
 #include "State.h"
 
 #include <iostream>
+#include "Logger.h"
 
 State::State() {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	Logger::getInstance().logText(__PRETTY_FUNCTION__);
 }
 
 State::~State() {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	Logger::getInstance().logText(__PRETTY_FUNCTION__);
 }
 

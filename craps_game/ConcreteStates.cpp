@@ -10,24 +10,28 @@
 #include <iostream>
 #include <memory>
 
+#include "Logger.h"
+
 GameState::GameState(Game &g) :
 		g(g) {
+	Logger::getInstance().logText(__PRETTY_FUNCTION__);
 }
 
 GameState::~GameState() {
+	Logger::getInstance().logText(__PRETTY_FUNCTION__);
 }
 
 StartState::StartState(Game &g) :
 		GameState(g) {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	Logger::getInstance().logText(__PRETTY_FUNCTION__);
 }
 
 StartState::~StartState() {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	Logger::getInstance().logText(__PRETTY_FUNCTION__);
 }
 
 bool StartState::handleEvent(const Event &e, Context &c) {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	Logger::getInstance().logText(__PRETTY_FUNCTION__);
 	switch (e.getId()) {
 	case 2:
 	case 3:
@@ -63,85 +67,85 @@ bool StartState::handleEvent(const Event &e, Context &c) {
 }
 
 void StartState::doActivity() {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	Logger::getInstance().logText(__PRETTY_FUNCTION__);
 }
 
 void StartState::entryAction() {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	Logger::getInstance().logText(__PRETTY_FUNCTION__);
 	g.rollDice();
 }
 
 void StartState::exitAction() {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	Logger::getInstance().logText(__PRETTY_FUNCTION__);
 }
 
 LoseState::LoseState(Game &g) :
 		GameState(g) {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	Logger::getInstance().logText(__PRETTY_FUNCTION__);
 }
 
 LoseState::~LoseState() {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	Logger::getInstance().logText(__PRETTY_FUNCTION__);
 }
 
 bool LoseState::handleEvent(const Event &e, Context &c) {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	Logger::getInstance().logText(__PRETTY_FUNCTION__);
 	(void) e;
 	(void) c;
 	return true;
 }
 
 void LoseState::doActivity() {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	Logger::getInstance().logText(__PRETTY_FUNCTION__);
 }
 
 void LoseState::entryAction() {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	Logger::getInstance().logText(__PRETTY_FUNCTION__);
 }
 
 void LoseState::exitAction() {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	Logger::getInstance().logText(__PRETTY_FUNCTION__);
 }
 
 WinState::WinState(Game &g) :
 		GameState(g) {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	Logger::getInstance().logText(__PRETTY_FUNCTION__);
 }
 
 WinState::~WinState() {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	Logger::getInstance().logText(__PRETTY_FUNCTION__);
 }
 
 bool WinState::handleEvent(const Event &e, Context &c) {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	Logger::getInstance().logText(__PRETTY_FUNCTION__);
 	(void) e;
 	(void) c;
 	return true;
 }
 
 void WinState::doActivity() {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	Logger::getInstance().logText(__PRETTY_FUNCTION__);
 }
 
 void WinState::entryAction() {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	Logger::getInstance().logText(__PRETTY_FUNCTION__);
 }
 
 void WinState::exitAction() {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	Logger::getInstance().logText(__PRETTY_FUNCTION__);
 }
 
 Score4State::Score4State(Game &g) :
 		GameState(g) {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	Logger::getInstance().logText(__PRETTY_FUNCTION__);
 }
 
 Score4State::~Score4State() {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	Logger::getInstance().logText(__PRETTY_FUNCTION__);
 }
 
 bool Score4State::handleEvent(const Event &e, Context &c) {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	Logger::getInstance().logText(__PRETTY_FUNCTION__);
 	switch (e.getId()) {
 	case 4:
 		c.setCurrentState(std::make_shared<WinState>(g));
@@ -156,29 +160,29 @@ bool Score4State::handleEvent(const Event &e, Context &c) {
 }
 
 void Score4State::doActivity() {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	Logger::getInstance().logText(__PRETTY_FUNCTION__);
 }
 
 void Score4State::entryAction() {
+	Logger::getInstance().logText(__PRETTY_FUNCTION__);
 	g.rollDice();
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
 }
 
 void Score4State::exitAction() {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	Logger::getInstance().logText(__PRETTY_FUNCTION__);
 }
 
 Score5State::Score5State(Game &g) :
 		GameState(g) {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	Logger::getInstance().logText(__PRETTY_FUNCTION__);
 }
 
 Score5State::~Score5State() {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	Logger::getInstance().logText(__PRETTY_FUNCTION__);
 }
 
 bool Score5State::handleEvent(const Event &e, Context &c) {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	Logger::getInstance().logText(__PRETTY_FUNCTION__);
 	switch (e.getId()) {
 	case 5:
 		c.setCurrentState(std::make_shared<WinState>(g));
@@ -193,29 +197,29 @@ bool Score5State::handleEvent(const Event &e, Context &c) {
 }
 
 void Score5State::doActivity() {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	Logger::getInstance().logText(__PRETTY_FUNCTION__);
 }
 
 void Score5State::entryAction() {
+	Logger::getInstance().logText(__PRETTY_FUNCTION__);
 	g.rollDice();
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
 }
 
 void Score5State::exitAction() {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	Logger::getInstance().logText(__PRETTY_FUNCTION__);
 }
 
 Score6State::Score6State(Game &g) :
 		GameState(g) {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	Logger::getInstance().logText(__PRETTY_FUNCTION__);
 }
 
 Score6State::~Score6State() {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	Logger::getInstance().logText(__PRETTY_FUNCTION__);
 }
 
 bool Score6State::handleEvent(const Event &e, Context &c) {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	Logger::getInstance().logText(__PRETTY_FUNCTION__);
 	switch (e.getId()) {
 	case 6:
 		c.setCurrentState(std::make_shared<WinState>(g));
@@ -230,29 +234,29 @@ bool Score6State::handleEvent(const Event &e, Context &c) {
 }
 
 void Score6State::doActivity() {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	Logger::getInstance().logText(__PRETTY_FUNCTION__);
 }
 
 void Score6State::entryAction() {
+	Logger::getInstance().logText(__PRETTY_FUNCTION__);
 	g.rollDice();
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
 }
 
 void Score6State::exitAction() {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	Logger::getInstance().logText(__PRETTY_FUNCTION__);
 }
 
 Score8State::Score8State(Game &g) :
 		GameState(g) {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	Logger::getInstance().logText(__PRETTY_FUNCTION__);
 }
 
 Score8State::~Score8State() {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	Logger::getInstance().logText(__PRETTY_FUNCTION__);
 }
 
 bool Score8State::handleEvent(const Event &e, Context &c) {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	Logger::getInstance().logText(__PRETTY_FUNCTION__);
 	switch (e.getId()) {
 	case 8:
 		c.setCurrentState(std::make_shared<WinState>(g));
@@ -267,29 +271,29 @@ bool Score8State::handleEvent(const Event &e, Context &c) {
 }
 
 void Score8State::doActivity() {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	Logger::getInstance().logText(__PRETTY_FUNCTION__);
 }
 
 void Score8State::entryAction() {
+	Logger::getInstance().logText(__PRETTY_FUNCTION__);
 	g.rollDice();
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
 }
 
 void Score8State::exitAction() {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	Logger::getInstance().logText(__PRETTY_FUNCTION__);
 }
 
 Score9State::Score9State(Game &g) :
 		GameState(g) {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	Logger::getInstance().logText(__PRETTY_FUNCTION__);
 }
 
 Score9State::~Score9State() {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	Logger::getInstance().logText(__PRETTY_FUNCTION__);
 }
 
 bool Score9State::handleEvent(const Event &e, Context &c) {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	Logger::getInstance().logText(__PRETTY_FUNCTION__);
 	switch (e.getId()) {
 	case 9:
 		c.setCurrentState(std::make_shared<WinState>(g));
@@ -304,29 +308,29 @@ bool Score9State::handleEvent(const Event &e, Context &c) {
 }
 
 void Score9State::doActivity() {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	Logger::getInstance().logText(__PRETTY_FUNCTION__);
 }
 
 void Score9State::entryAction() {
+	Logger::getInstance().logText(__PRETTY_FUNCTION__);
 	g.rollDice();
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
 }
 
 void Score9State::exitAction() {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	Logger::getInstance().logText(__PRETTY_FUNCTION__);
 }
 
 Score10State::Score10State(Game &g) :
 		GameState(g) {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	Logger::getInstance().logText(__PRETTY_FUNCTION__);
 }
 
 Score10State::~Score10State() {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	Logger::getInstance().logText(__PRETTY_FUNCTION__);
 }
 
 bool Score10State::handleEvent(const Event &e, Context &c) {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	Logger::getInstance().logText(__PRETTY_FUNCTION__);
 	switch (e.getId()) {
 	case 10:
 		c.setCurrentState(std::make_shared<WinState>(g));
@@ -341,29 +345,29 @@ bool Score10State::handleEvent(const Event &e, Context &c) {
 }
 
 void Score10State::doActivity() {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	Logger::getInstance().logText(__PRETTY_FUNCTION__);
 }
 
 void Score10State::entryAction() {
+	Logger::getInstance().logText(__PRETTY_FUNCTION__);
 	g.rollDice();
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
 }
 
 void Score10State::exitAction() {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	Logger::getInstance().logText(__PRETTY_FUNCTION__);
 }
 
 Score11State::Score11State(Game &g) :
 		GameState(g) {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	Logger::getInstance().logText(__PRETTY_FUNCTION__);
 }
 
 Score11State::~Score11State() {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	Logger::getInstance().logText(__PRETTY_FUNCTION__);
 }
 
 bool Score11State::handleEvent(const Event &e, Context &c) {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	Logger::getInstance().logText(__PRETTY_FUNCTION__);
 	switch (e.getId()) {
 	case 11:
 		c.setCurrentState(std::make_shared<WinState>(g));
@@ -378,14 +382,14 @@ bool Score11State::handleEvent(const Event &e, Context &c) {
 }
 
 void Score11State::doActivity() {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	Logger::getInstance().logText(__PRETTY_FUNCTION__);
 }
 
 void Score11State::entryAction() {
+	Logger::getInstance().logText(__PRETTY_FUNCTION__);
 	g.rollDice();
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
 }
 
 void Score11State::exitAction() {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	Logger::getInstance().logText(__PRETTY_FUNCTION__);
 }

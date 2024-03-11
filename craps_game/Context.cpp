@@ -8,27 +8,28 @@
 #include "Context.h"
 
 #include <iostream>
+#include "Logger.h"
 
 Context::Context() {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	Logger::getInstance().logText(__PRETTY_FUNCTION__);
 }
 
 Context::~Context() {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	Logger::getInstance().logText(__PRETTY_FUNCTION__);
 }
 
 void Context::scheduleEvent(const Event &e) {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	Logger::getInstance().logText(__PRETTY_FUNCTION__);
 	events.push(e);
 }
 
 pointyboy Context::getCurrentState() {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	Logger::getInstance().logText(__PRETTY_FUNCTION__);
 	return this->currentState;
 }
 
 void Context::setCurrentState(pointyboy currentState) {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	Logger::getInstance().logText(__PRETTY_FUNCTION__);
 	if (this->currentState) {
 		this->currentState->exitAction();
 	}
@@ -39,7 +40,7 @@ void Context::setCurrentState(pointyboy currentState) {
 
 void Context::run() {
 	for (; !events.empty(); events.pop()) {
-		std::cout << events.front().getId() << ' ' << std::endl;
+//		std::cout << events.front().getId() << ' ' << std::endl;
 		currentState->handleEvent(events.front(), *this);
 	}
 }
