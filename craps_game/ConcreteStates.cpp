@@ -322,7 +322,6 @@ Score10State::Score10State(Game &g) :
 }
 
 Score10State::~Score10State() {
-	g.rollDice();
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
 }
 
@@ -346,6 +345,7 @@ void Score10State::doActivity() {
 }
 
 void Score10State::entryAction() {
+	g.rollDice();
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
 }
 

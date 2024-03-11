@@ -7,7 +7,7 @@
 #include "Game.h"
 
 int main() {
-	for (unsigned long long i = 0; i < 1; i++) {
+	for (unsigned long long i = 0; i < 100; i++) {
 		Game g;
 		g.play();
 	}

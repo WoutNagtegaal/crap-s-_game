@@ -9,6 +9,7 @@
 #define GAME_H_
 
 #include "Context.h"
+#include "Dice.h"
 
 class Game: public Context {
 public:
@@ -17,6 +18,12 @@ public:
 
 	void play();
 	void rollDice();
+
+	void countWin();
+	void countLoss();
+private:
+	Dice d1;
+	Dice d2;
 };
 
 #endif /* GAME_H_ */
