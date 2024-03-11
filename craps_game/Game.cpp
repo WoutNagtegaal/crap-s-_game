@@ -41,3 +41,5 @@ void Game::rollDice() {
 //	this->scheduleEvent(Event(10));
 }
 
+Game::Game(const Game &rhs): d1(Dice(6)), d2(Dice(6)) {
+}

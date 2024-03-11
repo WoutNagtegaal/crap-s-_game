@@ -14,6 +14,7 @@
 class Game: public Context {
 public:
 	Game();
+	Game(const Game &rhs);
 	virtual ~Game();
 
 	void play();
