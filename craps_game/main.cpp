@@ -1,16 +1,19 @@
 #include "Context.h"
 #include "State.h"
-#include "StartState.h"
-#include "LoseState.h"
+#include "ConcreteStates.h"
 
 #include <memory>
 #include "types.h"
 
-int main(int argc, char **argv) {
+int main() {
 	Context c;
 //	c.setCurrentState(std::make_shared<StartState>());
 	pointyboy p = std::make_shared<StartState>();
 	c.setCurrentState(p);
-	p = std::make_shared<LoseState>();
-	c.setCurrentState(p);
+
+	c.scheduleEvent(6);
+	c.scheduleEvent(4);
+	c.scheduleEvent(2);
+	c.run();
+
 }

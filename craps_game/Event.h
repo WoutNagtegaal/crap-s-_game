@@ -13,7 +13,7 @@ public:
 	Event(unsigned long long id);
 	Event(const Event &rhs);
 
-	unsigned long getId();
+	unsigned long long getId() const;
 
 	Event& operator=(const Event &rhs);
 

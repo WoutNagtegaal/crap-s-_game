@@ -15,7 +15,7 @@ Event::Event(const Event &rhs) :
 		id(rhs.id) {
 }
 
-unsigned long Event::getId() {
+unsigned long long Event::getId() const {
 	return this->id;
 }
 
