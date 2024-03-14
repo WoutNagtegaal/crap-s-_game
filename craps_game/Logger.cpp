@@ -13,10 +13,8 @@
 std::mutex locker;
 
 void Logger::logText(const std::string &logtext) {
-	std::lock_guard<std::mutex> guard(locker);
-	std::cout << "Thread: " << std::this_thread::get_id() << " - ";
-	std::cout << "Logger says: ";
-	std::cout << logtext << std::endl;
+//	std::lock_guard<std::mutex> guard(locker);
+	l->log(logtext);
 }
 
 Logger& Logger::getInstance() {
@@ -29,12 +27,26 @@ void Logger::logText(const std::stringstream &logtext) {
 	logText(logtext.str());
 }
 
-Logger::Logger() {
-	// TODO Auto-generated constructor stub
-
+Logger::Logger(): currentStrategy(Logger::LOG_TO_CONSOLE) {
+	l = std::make_unique<LogToConsole>();
 }
 
 Logger::~Logger() {
-	// TODO Auto-generated destructor stub
 }
 
+void Logger::setLogStrategy(enum LogStrategies logStrategy) {
+	switch(logStrategy) {
+	case LOG_TO_FILE:
+		this->currentStrategy = logStrategy;
+		this->l = std::make_unique<LogToFile>("output.txt");
+		break;
+	case LOG_TO_CONSOLE:
+		this->currentStrategy = logStrategy;
+		this->l = std::make_unique<LogToConsole>();
+		break;
+	}
+}
+
+enum Logger::LogStrategies Logger::getLogStrategy() {
+	return this->currentStrategy;
+}
