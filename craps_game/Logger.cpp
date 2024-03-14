@@ -8,11 +8,13 @@
 #include "Logger.h"
 #include <iostream>
 #include <mutex>
+#include <thread>
 
 std::mutex locker;
 
 void Logger::logText(const std::string &logtext) {
 	std::lock_guard<std::mutex> guard(locker);
+	std::cout << "Thread: " << std::this_thread::get_id() << " - ";
 	std::cout << "Logger says: ";
 	std::cout << logtext << std::endl;
 }

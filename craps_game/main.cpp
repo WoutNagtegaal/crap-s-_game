@@ -10,21 +10,19 @@
 #include "Game.h"
 #include "Logger.h"
 
-void doSomeShit() {
-	Game g;
-	g.play();
-}
-
 int main() {
-	const unsigned long long count = 50;
+	const unsigned long long count = 5000;
 
 	std::array<std::thread, count> threads;
 	Game g;
 	for (unsigned long long i = 0; i < count; i++) {
-		threads[i] = std::thread(&doSomeShit);
+		threads[i] = std::thread([]() {
+			Game g;
+			g.play();
+		});
 	}
-	for(std::thread &t:threads) {
+	for (std::thread &t : threads) {
 		t.join();
 	}
-	Logger::getInstance().logText("ehe");
+	Logger::getInstance().logText("Finished");
 }
