@@ -36,4 +36,12 @@ private:
 	std::ofstream file;
 };
 
+class LogToNetwork: public LogStrategy {
+public:
+	LogToNetwork();
+	virtual ~LogToNetwork();
+
+	virtual void log(const std::string &logtext);
+};
+
 #endif /* LOGSTRATEGY_H_ */

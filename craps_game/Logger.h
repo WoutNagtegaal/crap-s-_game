@@ -18,7 +18,8 @@ class Logger {
 public:
 	enum LogStrategies {
 		LOG_TO_FILE,
-		LOG_TO_CONSOLE
+		LOG_TO_CONSOLE,
+		LOG_TO_NETWORK
 	};
 
 

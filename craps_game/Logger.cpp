@@ -13,7 +13,7 @@
 std::mutex locker;
 
 void Logger::logText(const std::string &logtext) {
-//	std::lock_guard<std::mutex> guard(locker);
+	std::lock_guard<std::mutex> guard(locker);
 	l->log(logtext);
 }
 
@@ -44,6 +44,10 @@ void Logger::setLogStrategy(enum LogStrategies logStrategy) {
 		this->currentStrategy = logStrategy;
 		this->l = std::make_unique<LogToConsole>();
 		break;
+	case LOG_TO_NETWORK:
+			this->currentStrategy = logStrategy;
+			this->l = std::make_unique<LogToNetwork>();
+			break;
 	}
 }
 

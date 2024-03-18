@@ -11,11 +11,13 @@
 #include "Logger.h"
 
 int main() {
-	const unsigned long long count = 1000;
+	const unsigned long long count = 5000;
 
 	std::cout << "Choose output option: " << std::endl;
 	std::cout << "To file: " << Logger::LOG_TO_FILE << std::endl;
 	std::cout << "To console: " << Logger::LOG_TO_CONSOLE << std::endl;
+	std::cout << "To network: " << Logger::LOG_TO_NETWORK << std::endl;
+
 	std::cout << "Enter: ";
 
 	unsigned short selection = 0;
